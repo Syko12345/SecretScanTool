@@ -44,3 +44,17 @@ If the exercise isn't ready in 20 seconds, please check the [Actions](../../acti
 ---
 
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+
+## Owner login scan tool
+
+This repository now includes a minimal owner verification tool in `/tmp/workspace/Syko12345/SecretScanTool/owner_scan_auth.py`.
+
+It stores a hashed owner scan signature and denies login when the new scan does not match the enrolled owner signature.
+
+### Quick start
+
+```bash
+python owner_scan_auth.py --database owner_scans.json enroll alice "FaceVector:12345"
+python owner_scan_auth.py --database owner_scans.json login alice "FaceVector:12345"   # Access granted
+python owner_scan_auth.py --database owner_scans.json login alice "FaceVector:wrong"  # Access denied
+```
